@@ -1,5 +1,57 @@
-{% extends 'index.html' %}
+<!-- form.html：只有表單，不包含 html/head/body/base -->
+<form id="orderForm" class="form-container">
 
-{% block form %}
+    <div class="form-row">
+        <label>客戶名稱：</label>
+        <input id="customer_name" type="text">
+    </div>
 
-{% endblock%}
+    <div class="form-row">
+        <label>商品種類：</label>
+        <select id="categorySelect" onchange="selectCategory()">
+            <option value="">請選擇</option>
+            <option value="飲料">飲料</option>
+            <option value="點心">點心</option>
+            <option value="主餐">主餐</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>商品名稱：</label>
+        <select id="productSelect" onchange="selectProduct()">
+            <option value="">請選擇商品</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>單價：</label>
+        <input id="priceInput" type="text" readonly>
+    </div>
+
+    <div class="form-row">
+        <label>數量：</label>
+        <input id="amountInput" type="number" value="1" min="1" oninput="countTotal()">
+    </div>
+
+    <div class="form-row">
+        <label>小計：</label>
+        <input id="totalInput" type="text" readonly>
+    </div>
+
+    <div class="form-row">
+        <label>狀態：</label>
+        <select id="status">
+            <option value="未付款">未付款</option>
+            <option value="已付款">已付款</option>
+            <option value="已出貨">已出貨</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>備註：</label>
+        <input id="note" type="text">
+    </div>
+
+    <button type="button" class="submit-btn" onclick="add_order()">新增訂單</button>
+
+</form>

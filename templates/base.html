@@ -2,19 +2,26 @@
 <html lang="zh-TW">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/static/css/index.css">
+        <!-- 建議改成 url_for，路徑比較不會出錯 -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="static/js/orderadd.js" defer></script>
         <title>Sales Management System</title>
     </head>
+
     <body>
+
         <nav class="navbar">
             <button onclick="location.assign('/')">訂單管理</button>
         </nav>
+
         {% block section %}{% endblock %}
+
         {% if warning %}
             <script>alert("{{ warning }}")</script>
         {% endif %}
+
+        <!-- ⭐ 一定放在 body 最底部，這樣 DOM 都準備好了 -->
+        <script src="{{ url_for('static', filename='js/orderadd.js') }}"></script>
     </body>
 </html>

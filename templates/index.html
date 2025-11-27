@@ -1,38 +1,58 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
+
 {% block section %}
-    <div id="order-section" class="page-section">
-        <div style="height: 2cm; width: 5cm;">
-            <button type="button" onclick="open_input_table()">新增商品資料</button>
-            <div id="addModal" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <span class="close" onclick="close_input_table()">&times;</span>
-                    <h3>新增商品資料</h3>
-                    {% block form %}
-                    {% endblock %}
-                </div>
-            </div>
+<div id="order-section" class="page-section">
+
+    <!-- 新增商品資料按鈕 -->
+    <button class="primary-btn" onclick="open_input_table()">
+        新增商品資料
+    </button>
+
+    <!-- 彈出視窗（只有這一個 #addModal） -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="close_input_table()">&times;</span>
+
+            <!-- 把表單片段插進來 -->
+            {% include 'form.html' %}
         </div>
-        <table border="2 solid black">
-            <tr>
-                <td>訂單編號</td>
-                <td>日期</td>
-                <td>客戶名稱</td>
-                <td>商品名稱</td>
-                <td>單價</td>
-                <td>數量</td>
-                <td>小計</td>
-                <td>狀態</td>
-                <td>備注</td>
-                <td></td>
-            </tr>
-            {% for order in orders %}
-            <tr>
-                {% for i in range(order|length) %}
-                    <td>{{ order[i] }}</td>
-                {% endfor %}
-                <td><button value="{{ order[0] }}" onclick="delete_data(this.value)">刪除</button></td>
-            </tr>
-            {% endfor %}
-        </table>
     </div>
+
+    <!-- 訂單列表表格 -->
+    <table class="order-table" border="2 solid black">
+        <tr>
+            <th>訂單編號</th>
+            <th>日期</th>
+            <th>客戶名稱</th>
+            <th>商品名稱</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th>小計</th>
+            <th>狀態</th>
+            <th>備註</th>
+            <th>操作</th>
+        </tr>
+
+        {% for order in orders %}
+        <tr>
+            <td>{{ order[0] }}</td>
+            <td>{{ order[1] }}</td>
+            <td>{{ order[2] }}</td>
+            <td>{{ order[3] }}</td>
+            <td>{{ order[4] }}</td>
+            <td>{{ order[5] }}</td>
+            <td>{{ order[6] }}</td>
+            <td>{{ order[7] }}</td>
+            <td>{{ order[8] }}</td>
+            <td>
+                <button class="danger-btn"
+                        onclick="delete_data('{{ order[0] }}')">
+                    刪除
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
 {% endblock %}

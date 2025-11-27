@@ -1,118 +1,160 @@
-/* index.css */
-
+/* ====== 全域設定 ====== */
 body {
-    font-family: "Microsoft JhengHei", sans-serif;
-    background-color: #f8f9fa;
     margin: 0;
-    padding: 2rem;
-    color: #333;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
 }
 
-h2, h3 {
-    color: #2c3e50;
-}
-
-.data-table {
-    margin-bottom: 3rem;
-}
-
-button {
-    background-color: #3498db;
-    border: none;
-    padding: 0.5rem 1rem;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-td {
-    border: 1px solid #ddd;
-    padding: 0.75rem;
-    text-align: center;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    width: 400px;
-    height: auto;
-    max-height: 100vh;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    overflow-y: auto;
-}
-
-.close {
-    float: right;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#add-button {
-    width: 100%;
-    margin-top: 1rem;
-}
-
+/* ====== 導覽列 ====== */
 .navbar {
-    background-color: #007bff;
-    padding: 10px;
-    display: flex;
-    gap: 10px;
+    background: #4e83ff;
+    padding: 20px;
+    text-align: left;
 }
 
 .navbar button {
-    background-color: white;
-    color: #007bff;
+    padding: 10px 20px;
+    background: white;
     border: none;
-    padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar button:hover {
+    background: #e8e8e8;
+}
+
+/* ====== 主內容區 ====== */
+.page-section {
+    margin: 30px;
+}
+
+/* ====== 按鈕 ====== */
+button {
+    cursor: pointer;
+    padding: 8px 15px;
+    background: #4e83ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #3668cc;
+}
+
+/* ====== 彈出視窗 (modal) ====== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* 彈出視窗內容置中 */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+
+    width: 420px;
+    max-width: 90%;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* X 按鈕 */
+.close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* ====== 表單容器 ====== */
+.form-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 標題 */
+.form-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* 每一列置中、分行 */
+.form-row {
+    margin-bottom: 14px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 6px;
     font-weight: bold;
 }
 
-.page-section {
-    margin: 20px;
+/* input / select 統一樣式 */
+.form-row input,
+.form-row select {
+    width: 80%;
+    max-width: 260px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
 }
 
-p {
-    margin: 0.5rem 0;
-}
-
-#product-total {
-    background-color: #fff;
+/* 送出按鈕 */
+.submit-btn {
+    width: 60%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #4e83ff;
+    color: white;
+    border-radius: 8px;
     border: none;
-    font-size: medium;
-    width: auto;
+    font-size: 15px;
+}
+
+.submit-btn:hover {
+    background: #2f5fcc;
+}
+
+/* ====== 訂單表格 ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+table tr:hover {
+    background: #eef3ff;
 }
